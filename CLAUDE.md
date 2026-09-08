@@ -26,12 +26,10 @@ or wherever `gsuid_core_path` config points.
 This project uses **Poetry** and **pre-commit**. There is no application entrypoint here — the code
 runs as a plugin inside a host NoneBot2 bot.
 
-- Install deps: `poetry install`
-- Build distributables: `poetry build` (outputs to `dist/`)
+- Install deps: `uv sync`
+- Build distributables: `uv build` (outputs to `dist/`)
 - Lint + format everything: `pre-commit run --all-files`
-- Format only (matches CI): `poetry run black .` then `poetry run isort .`
-- `requirements.txt` is **generated** by the `poetry-export` pre-commit hook — never hand-edit it;
-  change `pyproject.toml` and let the hook regenerate it.
+- Format only (matches CI): `uv run black .` then `uv run isort .`
 
 Formatting is strict: **black with line-length 79**, isort `profile=black` + `length_sort=true`.
 `pyproject.toml` configures pytest (`asyncio_mode = "auto"`), but there is currently **no test
