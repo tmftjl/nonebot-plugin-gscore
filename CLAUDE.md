@@ -18,8 +18,7 @@ So when a user reports a "command doesn't work" or "feature X is broken," the fi
 gsuid_core, not in this repo. This repo is the right place only for **protocol translation** bugs
 (an event/segment not converted correctly, or a platform send path failing).
 
-gsuid_core is expected to live at a sibling directory `../gsuid_core` (see `gscore/path.py`),
-or wherever `gsuid_core_path` config points.
+gsuid_core is accessed through its configured WebSocket endpoint.
 
 ## Commands
 
@@ -90,9 +89,9 @@ follow this pattern.
 ### Configuration
 
 All config is read from the host bot's NoneBot `driver.config` via `hasattr(...)` guards (see top of
-`client.py`, `__init__.py`, `path.py`). Keys: `gsuid_core_host` (default `localhost`),
+`client.py` and `__init__.py`). Keys: `gsuid_core_host` (default `localhost`),
 `gsuid_core_port` (`8765`), `gsuid_core_ws_token`, `gsuid_core_botid`, `gsuid_core_repeat` (enables a
-10s reconnect cron), `gsuid_core_reply_img`, `gsuid_core_path`. The WS URL is
+10s reconnect cron), and `gsuid_core_reply_img`. The WS URL is
 `ws://{host}:{port}/ws/{BOT_ID}[?token=...]`.
 
 ### Permission levels (`user_pm`)
